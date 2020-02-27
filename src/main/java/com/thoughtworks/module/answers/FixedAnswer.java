@@ -1,6 +1,5 @@
 package com.thoughtworks.module.answers;
 
-import com.sun.tools.javac.util.StringUtils;
 import com.thoughtworks.interfaces.AnswerGenerator;
 import com.thoughtworks.module.FormatChecker;
 

@@ -20,19 +20,23 @@ public class Controller {
 
         while (attemptCount > 0) {
             String input = sc.next();
+            String comparatorResult = "";
             resultToBePrinted.append(input).append(" ");
             InputResolver inputResolver = new InputResolver(input);
             try {
                 int[] resolvedInput = inputResolver.resolveInput();
                 Comparator comparator = new Comparator(answer, resolvedInput);
                 ComparatorResultTranslator comparatorResultTranslator = new ComparatorResultTranslator(comparator);
-                resultToBePrinted.append(comparatorResultTranslator.getComparatorResult()).append("\n");
-                if ("4A0B".equals(comparatorResultTranslator.getComparatorResult())) {
-                    resultToBePrinted.append("Congratulations, you win!");
-                }
+                comparatorResult = comparatorResultTranslator.getComparatorResult();
+                resultToBePrinted.append(comparatorResult).append("\n");
                 attemptCount--;
             } catch (WrongInputException e) {
                 resultToBePrinted.append(e.getMessage()).append("\n");
+            }
+            if ("4A0B".equals(comparatorResult)) {
+                resultToBePrinted.append("Congratulations, you win!");
+                System.out.println(resultToBePrinted.toString());
+                return;
             }
             System.out.println(resultToBePrinted.toString());
         }
