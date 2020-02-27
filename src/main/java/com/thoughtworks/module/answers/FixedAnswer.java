@@ -1,5 +1,6 @@
 package com.thoughtworks.module.answers;
 
+import com.sun.tools.javac.util.StringUtils;
 import com.thoughtworks.interfaces.AnswerGenerator;
 import com.thoughtworks.module.FormatChecker;
 
@@ -23,13 +24,13 @@ public class FixedAnswer implements AnswerGenerator {
             char[] charBuffer = new char[1024];
             int len;
             while ((len = fr.read(charBuffer)) != -1) {
-                    char[] answerCharArr = Arrays.copyOfRange(charBuffer, 0, len);
-                    answerArr = charArrToInt(answerCharArr);
-                    FormatChecker formatChecker = new FormatChecker(answerArr);
-                    if(!formatChecker.checkCodeAsArray()){
-                        RandomAnswer randomAnswer = new RandomAnswer();
-                        answerArr = randomAnswer.getAnswer();
-                    }
+                char[] answerCharArr = Arrays.copyOfRange(charBuffer, 0, len);
+                answerArr = charArrToInt(answerCharArr);
+                FormatChecker formatChecker = new FormatChecker(answerArr);
+                if (!formatChecker.checkCodeAsArray()) {
+                    RandomAnswer randomAnswer = new RandomAnswer();
+                    answerArr = randomAnswer.getAnswer();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,6 +38,16 @@ public class FixedAnswer implements AnswerGenerator {
             answerArr = randomAnswer.getAnswer();
         }
         return answerArr;
+    }
+
+    @Override
+    public String getAnswerAsString() {
+        int[] answer = getAnswer();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i : answer) {
+            stringBuilder.append(i);
+        }
+        return stringBuilder.toString();
     }
 
     private int[] charArrToInt(char[] charArr) {

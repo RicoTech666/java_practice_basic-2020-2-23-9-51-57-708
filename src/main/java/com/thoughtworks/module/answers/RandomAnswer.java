@@ -26,4 +26,14 @@ public class RandomAnswer implements AnswerGenerator {
         }
         return answer;
     }
+
+    @Override
+    public String getAnswerAsString() {
+        int[] answer = getAnswer();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i : answer) {
+            stringBuilder.append(i);
+        }
+        return stringBuilder.toString();
+    }
 }
