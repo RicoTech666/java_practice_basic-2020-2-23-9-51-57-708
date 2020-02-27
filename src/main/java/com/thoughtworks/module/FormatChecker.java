@@ -1,12 +1,10 @@
 package com.thoughtworks.module;
 
-import com.thoughtworks.interfaces.AnswerGenerator;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class FormatChecker {
-    private final int ANSWER_LENGTH = 4;
     private int[] codeAsArray;
 
 
@@ -14,20 +12,21 @@ public class FormatChecker {
         this.codeAsArray = codeAsArray;
     }
 
-    public boolean checkCodeAsArray() {
-        if (codeAsArray.length != ANSWER_LENGTH) {
-            return false;
+    public boolean isFormatWrong() {
+        int answerLength = 4;
+        if (codeAsArray.length != answerLength) {
+            return true;
         } else {
             if(checkHasRepeat()) {
-                return false;
+                return true;
             }
-            for (int i = 0; i < ANSWER_LENGTH; i++) {
+            for (int i = 0; i < answerLength; i++) {
                 boolean tempResult = (codeAsArray[i] >= 0) && (codeAsArray[i] <= 9);
                 if (!tempResult) {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 

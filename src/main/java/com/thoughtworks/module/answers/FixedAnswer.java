@@ -8,7 +8,6 @@ import java.util.Arrays;
 
 public class FixedAnswer implements AnswerGenerator {
 
-    private final int ANSWER_LENGTH = 4;
     private String answerFileName;
 
     public FixedAnswer(String answerFileName) {
@@ -17,7 +16,8 @@ public class FixedAnswer implements AnswerGenerator {
 
     @Override
     public int[] getAnswer() {
-        int[] answerArr = new int[ANSWER_LENGTH];
+        int answerLength = 4;
+        int[] answerArr = new int[answerLength];
         try {
             FileReader fr = new FileReader(answerFileName);
             char[] charBuffer = new char[1024];
@@ -26,13 +26,14 @@ public class FixedAnswer implements AnswerGenerator {
                 char[] answerCharArr = Arrays.copyOfRange(charBuffer, 0, len);
                 answerArr = charArrToInt(answerCharArr);
                 FormatChecker formatChecker = new FormatChecker(answerArr);
-                if (!formatChecker.checkCodeAsArray()) {
+                if (formatChecker.isFormatWrong()) {
                     RandomAnswer randomAnswer = new RandomAnswer();
                     answerArr = randomAnswer.getAnswer();
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
+            System.out.println("---Now we will generate a random answer---");
             RandomAnswer randomAnswer = new RandomAnswer();
             answerArr = randomAnswer.getAnswer();
         }
