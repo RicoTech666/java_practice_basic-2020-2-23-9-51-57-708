@@ -1,6 +1,7 @@
-package com.thoughtworks.module;
+package com.thoughtworks.module.answers;
 
 import com.thoughtworks.interfaces.AnswerGenerator;
+import com.thoughtworks.module.FormatChecker;
 
 import java.io.FileReader;
 import java.util.Arrays;

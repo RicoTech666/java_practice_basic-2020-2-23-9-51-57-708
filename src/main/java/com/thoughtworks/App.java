@@ -2,7 +2,7 @@ package com.thoughtworks;
 
 
 import com.thoughtworks.interfaces.AnswerGenerator;
-import com.thoughtworks.module.FixedAnswer;
+import com.thoughtworks.module.answers.FixedAnswer;
 
 public class App {
 
@@ -14,5 +14,6 @@ public class App {
             System.out.println(i);
             System.out.println("--");
         }
+
     }
 }

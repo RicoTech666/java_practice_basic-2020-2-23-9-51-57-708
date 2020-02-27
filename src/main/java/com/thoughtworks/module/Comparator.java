@@ -1,6 +1,7 @@
 package com.thoughtworks.module;
 
 public class Comparator {
+
     private int[] answer;
     private int[] input;
 
@@ -9,8 +10,26 @@ public class Comparator {
         this.input = input;
     }
 
-    public int[] comparatorResult() {
-        return null;
+    public int getCorrectNum() {
+        int num = 0;
+        for (int value : input) {
+            for (int i : answer) {
+                if (value == i) {
+                    num++;
+                }
+            }
+        }
+        return num;
+    }
+
+    public int getCorrectNumAndPosition() {
+        int num = 0;
+        for (int i = 0; i < input.length; i++) {
+            if (input[i] == answer[i]) {
+                num++;
+            }
+        }
+        return num;
     }
 
 }

@@ -1,4 +1,4 @@
-package com.thoughtworks.module;
+package com.thoughtworks.module.answers;
 
 import com.thoughtworks.interfaces.AnswerGenerator;
 
