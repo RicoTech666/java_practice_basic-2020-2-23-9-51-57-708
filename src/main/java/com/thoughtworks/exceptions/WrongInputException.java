@@ -1,4 +1,4 @@
-package com.thoughtworks.Exceptions;
+package com.thoughtworks.exceptions;
 
 public class WrongInputException extends Exception {
     public WrongInputException(String message) {
