@@ -10,6 +10,10 @@ public class Comparator {
         this.input = input;
     }
 
+    public int[] getInput() {
+        return input;
+    }
+
     public int getCorrectNum() {
         int num = 0;
         for (int value : input) {

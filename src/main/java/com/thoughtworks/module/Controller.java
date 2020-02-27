@@ -1,5 +1,6 @@
 package com.thoughtworks.module;
 
+import com.thoughtworks.exceptions.WrongInputException;
 import com.thoughtworks.interfaces.AnswerGenerator;
 
 import java.util.Scanner;
@@ -19,18 +20,14 @@ public class Controller {
         Scanner sc = new Scanner(System.in);
 
         while (attemptCount > 0) {
-
+            String input = sc.next();
+            InputResolver inputResolver = new InputResolver(input);
+            try {
+                int[] resolvedInput = inputResolver.resolveInput();
+            } catch (WrongInputException e) {
+                e.getMessage();
+            }
         }
     }
 
-    public static void main(String[] args) {
-        int[] test = new int[4];
-        Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        for (int i = 0; i < test.length; i++) {
-            test[i] = Integer.parseInt(String.valueOf(str.charAt(i)));
-            System.out.println(test[i]);
-        }
-
-    }
 }
